@@ -1,25 +1,25 @@
 ﻿using System.Text;
-using DesafioProjetoHospedagem.Models;
+using HostingProjectChallenge.Models;
 
 Console.OutputEncoding = Encoding.UTF8;
 
-// Cria os modelos de hóspedes e cadastra na lista de hóspedes
-List<Pessoa> hospedes = new List<Pessoa>();
+// Create guest models and register them in the guest list
+List<Person> guests = new List<Person>();
 
-Pessoa p1 = new Pessoa(nome: "Hóspede 1");
-Pessoa p2 = new Pessoa(nome: "Hóspede 2");
+Person guest1 = new Person(firstName: "Guest 1");
+Person guest2 = new Person(firstName: "Guest 2");
 
-hospedes.Add(p1);
-hospedes.Add(p2);
+guests.Add(guest1);
+guests.Add(guest2);
 
-// Cria a suíte
-Suite suite = new Suite(tipoSuite: "Premium", capacidade: 2, valorDiaria: 30);
+// Create the suite
+Suite suite = new Suite(suiteType: "Premium", capacity: 2, dailyRate: 30);
 
-// Cria uma nova reserva, passando a suíte e os hóspedes
-Reserva reserva = new Reserva(diasReservados: 5);
-reserva.CadastrarSuite(suite);
-reserva.CadastrarHospedes(hospedes);
+// Create a new reservation, passing the suite and guests
+Reservation reservation = new Reservation(reservedDays: 10);
+reservation.RegisterSuite(suite);
+reservation.RegisterGuests(guests);
 
-// Exibe a quantidade de hóspedes e o valor da diária
-Console.WriteLine($"Hóspedes: {reserva.ObterQuantidadeHospedes()}");
-Console.WriteLine($"Valor diária: {reserva.CalcularValorDiaria()}");
+// Display the number of guests and the daily rate
+Console.WriteLine($"Guests: {reservation.GetNumberOfGuests()}");
+Console.WriteLine($"Daily rate: {reservation.CalculateDailyRate().ToString("0.00")}");
